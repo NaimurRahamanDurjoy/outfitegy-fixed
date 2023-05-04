@@ -20,6 +20,7 @@ const showProducts = (products) => {
 
    const allProducts = products.slice(0, 10).map((pd) => pd);
    for (const product of allProducts) {
+      console.log(product);
       const image = product.image;
       const div = document.createElement('div');
       div.classList.add('product');
@@ -29,12 +30,14 @@ const showProducts = (products) => {
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
+      <p>Rating: ${product.rating.rate}</p>
+      <p>Count: ${product.rating.count}</p>
       <h2>Price: $ ${product.price}</h2>
 
       <button onclick="showProductDetails(${product.id})" id="details-btn"    data-bs-toggle="modal"
-      data-bs-target="#exampleModal" class="btn btn-outline-secondary mb-2 rounded-1 mt-1">Details</button>
+      data-bs-target="#exampleModal" class="btn btn-outline-success mb-2 rounded-1 mt-1">Details</button>
       
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success border-0 w-100 rounded-0 bg-main py-2">Add to cart</button>
+      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-info border-0 w-100 rounded-0 bg-main py-2">Add to cart</button>
       `;
       document.getElementById('all-products').appendChild(div);
    }
