@@ -34,6 +34,7 @@
 
    <body>
       <header>
+         <!-- Search field & search button -->
          <div class="row my-5 justify-content-center">
             <div class="col-md-5">
                <div class="input-group mb-3">
@@ -58,19 +59,21 @@
          </div>
       </header>
       <main in class="main">
+         <!-- Total products -->
          <div class="my-5">
             <h2 class="text-center">
                Total Products:
                <span class="text-info" id="total_products"></span>
             </h2>
          </div>
+         <!-- All products section -->
          <div class="row">
             <div class="col-md-9 col-lg-9 col-sm-7">
                <div id="all-products" class="">
                   <h1></h1>
                </div>
             </div>
-
+            <!-- My cart section -->
             <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
                <div class="cart" id="my-cart">
                   <table class="table">
@@ -90,7 +93,6 @@
                      <tbody>
                         <tr>
                            <th>Total Added-Products:</th>
-                           <!-- here will be no dollar sign -->
                            <td><span id="total-Products">0</span></td>
                            <td></td>
                            <td></td>
@@ -120,6 +122,7 @@
                         </tr>
                      </tbody>
                   </table>
+                  <!-- Buy Now button -->
                   <div class="parces text-center">
                      <button class="btn btn-info text-center">
                         Buy Now
@@ -133,18 +136,19 @@
       <!-- modal section -->
 
       <!-- Modal -->
+      
       <div
          class="modal fade"
-         id="exampleModal"
+         id="productDetailsModal"
          tabindex="-1"
-         aria-labelledby="exampleModalLabel"
+         aria-labelledby="productDetailsModalLabel"
          aria-hidden="true"
       >
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
-                  <h5 class="modal-title text-info" id="exampleModalLabel">
-                     Modal title
+                  <h5 class="modal-title text-info" id="productDetailsModalLabel">
+                     Product Details
                   </h5>
                   <button
                      type="button"
@@ -159,7 +163,7 @@
 
                <div class="modal-body text-secondary" id="modal_body"></div>
                <div class="p-4 d-flex">
-                  <strong class="me-2">Rating</strong>
+                  <strong class="me-2">Rating:</strong>
                   <span
                      id="rating"
                      class="text-white p-2 circle"

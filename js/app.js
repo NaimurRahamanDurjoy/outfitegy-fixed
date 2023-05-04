@@ -1,5 +1,5 @@
 const arr = [];
-
+// All products api load
 const loadProducts = (url) => {
    fetch(url)
       .then((res) => res.json())
@@ -8,10 +8,10 @@ const loadProducts = (url) => {
          showProducts(data);
       });
 };
-
+// All products API link
 loadProducts('https://fakestoreapi.com/products');
 
-// show all product in UI
+// show all products in UI
 const showProducts = (products) => {
    
    setInnerText('total_products', products.length);
@@ -20,13 +20,13 @@ const showProducts = (products) => {
 
    const allProducts = products.slice(0, 10).map((pd) => pd);
    for (const product of allProducts) {
-      console.log(product);
       const image = product.image;
       const div = document.createElement('div');
       div.classList.add('product');
-      div.innerHTML = `<div class="single-product">
+      div.innerHTML = `
+      <div class="single-product">
       <div>
-    <img class="product-image" src=${image}></img>
+         <img class="product-image" src=${image}></img>
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
@@ -35,16 +35,18 @@ const showProducts = (products) => {
       <h2>Price: $ ${product.price}</h2>
 
       <button onclick="showProductDetails(${product.id})" id="details-btn"    data-bs-toggle="modal"
-      data-bs-target="#exampleModal" class="btn btn-outline-success mb-2 rounded-1 mt-1">Details</button>
+      data-bs-target="#productDetailsModal" class="btn btn-outline-success mb-2 rounded-1 mt-1">Details</button>
       
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-info border-0 w-100 rounded-0 bg-main py-2">Add to cart</button>
       `;
       document.getElementById('all-products').appendChild(div);
    }
 };
+// All products in UI end
+
 
 let count = 0;
-
+// Add to cart button
 const addToCart = (id, price) => {
    count = count + 1;
    updatePrice('price', price);
@@ -54,20 +56,22 @@ const addToCart = (id, price) => {
    updateTaxAndCharge();
    document.getElementById('total-Products').innerText = count;
 };
-
+// Single Item load
 const showProductDetails = (product_id) => {
    console.log(product_id);
    fetch(`https://fakestoreapi.com/products/${product_id}`)
       .then((res) => res.json())
       .then((data) => showProductDetailsInModal(data));
 };
-
+// Single item show in UI
 const showProductDetailsInModal = (product_details) => {
-   console.log(product_details);
-   setInnerText('exampleModalLabel', product_details.title);
+   console.log(product_details.title);
+
+   setInnerText('productDetailsModalLabel', product_details.title);
    setInnerText('product_id', product_details.id);
    setInnerText('modal_body', product_details.description);
    setInnerText('rating', product_details.rating.rate);
+   
 };
 
 const getInputValue = (id) => {
